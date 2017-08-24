@@ -10,22 +10,22 @@
 #include <iostream>
 #include <unistd.h>
 #include <stdlib.h>
+
 using namespace std;
 
 int main()
 {
-    cout << "I will try my best to fill your RAM." << endl
-         << "You have 3 seconds to quit (Ctrl+C)" << endl;
-    sleep(3);
-    long allocatedMB = 0;
+    long allocSize = 0;
 
     while (true)
     {
-        unsigned char *leakThisMemoryPlease = new unsigned char[10485760];
-        for (int i = 0; i < 10485760; i++)
-            leakThisMemoryPlease[i] = i * rand();
-        allocatedMB += 10;
-        cout << allocatedMB << "MB allocated" << endl;
+        unsigned char *memorySize = new unsigned char[1048576];
+        for (int i = 0; i < 1048576; i++)
+        {
+            memorySize[i] = i * rand();
+        }
+        allocSize += 1;
+        cout << allocSize << " MB allocated" << endl;
     }
 
     return 0;
